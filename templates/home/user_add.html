@@ -1,0 +1,33 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h3>Add User</h3>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form  method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        <div class="card-body">
+          <label>Name: <span style="color:red">*</span> </label>
+          <input type="text" class="form-control" name="name" required>
+
+          <label>DOB: <span style="color:red">*</span> </label>
+          <input type="date" class="form-control" name="dob" required>
+
+          <label>DOJ: <span style="color:red">*</span> </label>
+          <input type="date" class="form-control" name="doj" required>
+
+          <label>File: <span style="color:red">*</span> </label>
+          <input type="file" class="form-control" name="file" required>
+
+        </div>
+        <div class="card-footer" style="text-align: center;">
+          <input type="submit" class="tn btn-success" value="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

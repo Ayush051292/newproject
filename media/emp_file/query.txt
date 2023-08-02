@@ -1,0 +1,25 @@
+or where
+data=emp.objects.filter(Q(name='bbb') | Q(dob='2023-07-13')).values()
+
+like
+data=emp.objects.filter(name__contains='bbbb').values()
+name__startswith
+name__endswith
+
+not like
+
+data=emp.objects.filter(~Q(Q(name__contains='b') | Q(name__contains='B'))).values()
+
+emp.objects.exclude(Q(keyword__contains='undefined') | Q(keyword__contains='null'))
+
+
+Monday
+------
+data table,
+sidebar collapse,
+delete with confirmation,
+auth,
+file upload,
+retrieve data from other database
+ajax,
+modal

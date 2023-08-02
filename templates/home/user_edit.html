@@ -1,0 +1,29 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h3>Edit User</h3>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form  method="POST">
+        {%csrf_token%}
+        <div class="card-body">
+          <label>Name: <span style="color:red">*</span> </label>
+          <input type="text" class="form-control" name="name" value="{{data.name}}" required>
+
+          <label>DOB: <span style="color:red">*</span> </label>
+          <input type="date" class="form-control" name="dob" value="{{data.dob | date:'Y-m-d'}}" required>
+
+          <label>DOJ: <span style="color:red">*</span> </label>
+          <input type="date" class="form-control" name="doj" value="{{data.doj | date:'Y-m-d'}}" required>
+        </div>
+        <div class="card-footer" style="text-align: center;">
+          <input type="submit" class="tn btn-success" value="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

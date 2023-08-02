@@ -1,0 +1,26 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h3>Show User</h3>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form  method="POST">
+        {%csrf_token%}
+        <div class="card-body">
+          <label>Name: </label>
+          <input type="text" class="form-control" name="name" value="{{data.name}}" readonly>
+
+          <label>DOB: </label>
+          <input type="text" class="form-control" name="dob" value="{{data.dob}}" readonly>
+
+          <label>DOJ: </label>
+          <input type="text" class="form-control" name="doj" value="{{data.doj}}" readonly>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

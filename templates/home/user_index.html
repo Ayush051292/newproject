@@ -1,0 +1,55 @@
+{% extends 'master.html' %}
+
+{% block content %}
+
+{% for message in messages %}
+{{ message }}
+{% endfor %}
+
+<!-- <div class="card"> -->
+  <div class="card-header">
+    <div class="row">
+      <div class="col-10">
+        <h3>User Data</h3>
+      </div>
+      <div class="col-2">
+        <a class="btn btn-warning" href="/user_add/">Add New</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card-body">
+        <table border="3px" class="table table-striped table-bordered" id="example1">
+          <thead>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Name</th>
+              <th>DOB</th>
+              <th>DOJ</th>
+              <th>File</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for dt in data %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{dt.name}}</td>
+                  <td>{{dt.dob | date:'d-m-Y'}}</td>
+                  <td>{{dt.doj | date:'d-m-Y'}}</td>
+                  <td><a download href="/media/{{dt.file}}/">{{dt.file}}</a></td>
+                  <td>
+                    <a href="/user_edit/{{dt.id}}/"><i style="color:yellow" class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                    <a href="/user_show/{{dt.id}}/"><i style="color:green" class="fa fa-eye"></i></a>&nbsp;&nbsp;
+                    <a href="/user_delete/{{dt.id}}/"><i style="color:red" class="fa fa-trash"></i></a>&nbsp;&nbsp;
+                  </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<!-- </div> -->
+{% endblock %}
