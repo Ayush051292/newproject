@@ -1,0 +1,23 @@
+{% extends 'master.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 style="text-align: center;">Add User</h3>
+        </div>
+        <form action="" method="POST">
+          <div class="card-body">
+            {%csrf_token%}
+            {{form.media}}
+            {{form.as_p}}
+          </div>
+          <div class="card-footer" style="text-align: center;">
+            <input type="submit" value="Add User" class="btn btn-success">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

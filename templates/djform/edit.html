@@ -1,0 +1,65 @@
+{% extends 'master.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+            <div class="row">
+            <div class="col-10">
+                <h3 style="text-align: center;">Edit User</h3>
+            </div>
+            <div class="col-2">
+                <label class="btn btn-warning" style="position:fixed;" id="swc">Selected: 0</label><br>
+                <label class="btn btn-success" style="position:fixed;" id="wc">Word Count: {{data.word_count}}</label>
+            </div>
+        </div>
+        </div>
+        <input type="hidden" id="id" value="{{id}}">
+        <form action="" method="POST">
+          <div class="card-body">
+            {%csrf_token%}
+            {{form.media}}
+            {{form.as_p}}
+          </div>
+          <div class="card-footer" style="text-align: center;">
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    var editor = CKEDITOR.replace('text_area',{
+      on:{
+        contentDom:function(){
+          this.document.on('mouseup',logselection,this);
+          this.document.on('keyup',logselection,this);
+        }
+      }
+    });
+
+    function logselection()
+    {
+      selected_words=this.getSelection().getSelectedText().split(' ').length;
+      document.getElementById('swc').innerHTML='Selected: '+selected_words;
+    }
+
+
+
+
+    editor.on('change', function( evt )
+    {
+        text=evt.editor.getData();
+        id=document.getElementById('id').value;
+        $.ajax({
+            url: "{% url 'autosave' %}",
+            data: {'id':id,'text':text},
+            success: function(response)
+            {
+                document.getElementById('wc').innerHTML="Word Count: "+response['count'];
+            }
+        });
+    });
+  </script>
+{% endblock %}

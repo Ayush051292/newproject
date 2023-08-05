@@ -12,7 +12,7 @@
         <h3>User Data Hello</h3>
       </div>
       <div class="col-2">
-        <a class="btn btn-warning" href="/user_add/">Add New</a>
+        <a class="btn btn-warning" href="/djform/add/">Add New</a>
       </div>
     </div>
   </div>
@@ -24,10 +24,12 @@
             <tr>
               <th>Sl. No.</th>
               <th>Name</th>
-              <th>DOB</th>
-              <th>DOJ</th>
-              <th>File</th>
-              <th>Action</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Website</th>
+              <th>Created at</th>
+              <th>Last Update</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -35,15 +37,15 @@
                 <tr>
                   <td>{{forloop.counter}}</td>
                   <td>{{dt.name}}</td>
-                  <td>{{dt.dob | date:'d-m-Y'}}</td>
-                  <td>{{dt.doj | date:'d-m-Y'}}</td>
+                  <td>{{dt.age }}</td>
+                  <td>{{dt.email}}</td>
+                  <td>{{dt.website}}</td>
+                  <td>{{dt.created_at | date:'d-m-Y H:i:s'}}</td>
+                  <td>{{dt.updated_at | date:'d-m-Y H:i:s'}}</td>
                   <td>
-                    <a href="{{dt.file.url}}" download>{{dt.file}}</a>
-                  </td>
-                  <td>
-                    <a href="/user_edit/{{dt.id}}/"><i style="color:yellow" class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                    <a href="/user_show/{{dt.id}}/"><i style="color:green" class="fa fa-eye"></i></a>&nbsp;&nbsp;
-                    <a href="/user_delete/{{dt.id}}/"><i style="color:red" class="fa fa-trash"></i></a>&nbsp;&nbsp;
+                    <a href="/djform/edit/{{dt.id}}/"><i style="color:yellow" class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                    <a href="/djform/show/{{dt.id}}/"><i style="color:green" class="fa fa-eye"></i></a>&nbsp;&nbsp;
+                    <a href="/djform/delete/{{dt.id}}/"><i style="color:red" class="fa fa-trash"></i></a>&nbsp;&nbsp;
                   </td>
                 </tr>
             {% endfor %}

@@ -45,7 +45,7 @@ def logout_page(request):
     return redirect('/login/')
 
 def user_index(request):
-    val=emp.objects.all().values()  
+    val=emp.objects.all()  
     compact={'data':val}
     return render(request,'home/user_index.html',compact)
 

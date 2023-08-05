@@ -4,6 +4,11 @@
   <div class="row">
     <div class="col-12">
         <p>ABC</p>
+        {% if user.is_authenticated %}
+          <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+        {% else %}
+          <p>Welcome, new user. Please log in.</p>
+        {% endif %}
     </div>
   </div>
 {% endblock %}
